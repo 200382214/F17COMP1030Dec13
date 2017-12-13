@@ -21,9 +21,60 @@ public class TicTacToe {
         {
             displayGameBoard();
             makeMove();
-        } while (true);
+        } while (!gameWon());
         
     } //end of main method
+    
+    
+    /**
+     * This method will check to see if there are 3 characters in a row
+     * of the same value.  
+     * @return true if the 3 characters match
+     */
+    public static boolean gameWon()
+    {
+        //check for a win on a row
+        for (int row=0; row<gameBoard.length; row++)
+        {
+            if (gameBoard[row][0].equals(gameBoard[row][1]) 
+                   && gameBoard[row][1].equals(gameBoard[row][2])
+                   && !gameBoard[row][0].equals(" "))
+                return true;
+        }
+        
+        //check for a win on a col
+        for (int col=0; col<gameBoard[0].length; col++)
+        {
+            if (gameBoard[0][col].equals(gameBoard[1][col]) 
+                    && gameBoard[1][col].equals(gameBoard[2][col])
+                    && !gameBoard[0][col].equals(" "))
+                return true;
+        }
+        
+        //check for a win upper left to lower right
+        if (gameBoard[0][0].equals(gameBoard[1][1]) 
+                && gameBoard[1][1].equals(gameBoard[2][2])
+                && !gameBoard[0][0].equals(" "))
+            return true;
+
+        //check for a win lower left to upper right
+        if (gameBoard[2][0].equals(gameBoard[1][1]) 
+                && gameBoard[1][1].equals(gameBoard[0][2])
+                && !gameBoard[0][0].equals(" "))
+            return true;
+
+        //check for a tie
+        if (gameBoardFull())
+            return true;    
+    }
+    
+    /**
+     * This method will check to see if there are any spaces left in
+     * the gameBoard. 
+     * @return true if the board is full, false if there is a space left
+     */
+    
+    
     
     /**
      * This method will prompt the user to enter row and column
