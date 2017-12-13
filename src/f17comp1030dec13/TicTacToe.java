@@ -17,11 +17,11 @@ public class TicTacToe {
         
         initializeGameBoard();
         
-    //    do
-    //    {
+        do
+        {
             displayGameBoard();
             makeMove();
-    //    } while (!gameWon());
+        } while (true);
         
     } //end of main method
     
@@ -44,10 +44,16 @@ public class TicTacToe {
             System.out.printf("Player %s, enter a col (1-3): ", currentPlayer);
             col = keyboard.nextInt();
             
-        } while (!validMove(row, col));
+        } while (!validMove(--row, --col));
         
         //add the move to the gameBoard
+        gameBoard[row][col]=currentPlayer;
+        
         //change the current player the other player
+        if (currentPlayer.equals("X"))
+            currentPlayer="O";
+        else
+            currentPlayer="X";
     } //end of makeMove() 
     
     /**
@@ -68,7 +74,11 @@ public class TicTacToe {
         if (gameBoard[row][col].equals(" "))
             return true;
         else
+        {
+            System.out.println("Sorry that position is already taken.");
             return false;
+        }
+            
     }
     
     /**
