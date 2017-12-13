@@ -65,7 +65,9 @@ public class TicTacToe {
 
         //check for a tie
         if (gameBoardFull())
-            return true;    
+            return true; 
+        
+        return false;
     }
     
     /**
@@ -73,6 +75,17 @@ public class TicTacToe {
      * the gameBoard. 
      * @return true if the board is full, false if there is a space left
      */
+    public static boolean gameBoardFull()
+    {
+        for (int row=0; row<gameBoard.length; row++)
+        {
+            for (int col=0; col<gameBoard[row].length; col++)
+               if (gameBoard[row][col].equals(" "))
+                   return false;
+        }
+        
+        return true;
+    }
     
     
     
