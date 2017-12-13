@@ -17,11 +17,30 @@ public class TicTacToe {
         
     //    do
     //    {
-    //        displayGameBoard();
+            displayGameBoard();
     //        makeMove();
     //    } while (!gameWon());
         
     } //end of main method
+    
+    /**
+     * This method will display the gameBoard to the console as characters
+     */
+    public static void displayGameBoard()
+    {
+        for (int row=0; row<gameBoard.length; row++)
+        {
+            for (int col=0; col<gameBoard[row].length; col++)
+            {
+                if (col < 2)
+                    System.out.printf(" %s |", gameBoard[row][col]);
+                else
+                    System.out.printf(" %s %n", gameBoard[row][col]);
+            }
+            if (row <2)
+                System.out.println("------------");
+        }
+    }
     
     /**
      * This method will put a space character " " in every
