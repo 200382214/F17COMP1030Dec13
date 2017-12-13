@@ -1,5 +1,7 @@
 package f17comp1030dec13;
 
+import java.util.Scanner;
+
 /**
  *
  * @author jwright
@@ -18,10 +20,56 @@ public class TicTacToe {
     //    do
     //    {
             displayGameBoard();
-    //        makeMove();
+            makeMove();
     //    } while (!gameWon());
         
     } //end of main method
+    
+    /**
+     * This method will prompt the user to enter row and column
+     * positions, check if the space is in the grid and available, then
+     * make the move
+     */
+    public static void makeMove()
+    {
+        int row, col;
+        do
+        {
+            Scanner keyboard = new Scanner(System.in);
+            //prompt the user for a row
+            System.out.printf("Player %s, enter a row (1-3): ", currentPlayer);
+            row = keyboard.nextInt();
+            
+            //prompt the user for a col
+            System.out.printf("Player %s, enter a col (1-3): ", currentPlayer);
+            col = keyboard.nextInt();
+            
+        } while (!validMove(row, col));
+        
+        //add the move to the gameBoard
+        //change the current player the other player
+    } //end of makeMove() 
+    
+    /**
+     * This method will validate the following:
+     * -row is in the range 0-2
+     * -col is in the range 0-2
+     * -if there is a " " character, the position is available
+     */
+    public static boolean validMove(int row, int col)
+    {
+        if (row<0 || row>2 || col<0 || col>2)
+        {
+            System.out.println("Sorry, row and columns must be in the range 1-3");
+            return false;
+        }
+        
+        //we know that it is a position inside the gameBoard
+        if (gameBoard[row][col].equals(" "))
+            return true;
+        else
+            return false;
+    }
     
     /**
      * This method will display the gameBoard to the console as characters
