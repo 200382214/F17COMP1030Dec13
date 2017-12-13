@@ -23,6 +23,9 @@ public class TicTacToe {
             makeMove();
         } while (!gameWon());
         
+        displayGameBoard();
+        
+        
     } //end of main method
     
     
@@ -60,7 +63,7 @@ public class TicTacToe {
         //check for a win lower left to upper right
         if (gameBoard[2][0].equals(gameBoard[1][1]) 
                 && gameBoard[1][1].equals(gameBoard[0][2])
-                && !gameBoard[0][0].equals(" "))
+                && !gameBoard[2][0].equals(" "))
             return true;
 
         //check for a tie
